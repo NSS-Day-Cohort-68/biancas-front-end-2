@@ -17,9 +17,132 @@
       "address": "102 4th Street",
       "isAdmin": false,
       "id": 2
+    },
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "userName": "johndoe",
+      "email": "john.doe@example.com",
+      "address": "103 Oak Avenue",
+      "isAdmin": false,
+      "id": 3
+    },
+    {
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "userName": "janesmith",
+      "email": "jane.smith@example.com",
+      "address": "104 Pine Street",
+      "isAdmin": false,
+      "id": 4
     }
   ],
-  "bikes": [],
-  "bikeTypes": [],
-  "workOrders": []
+  "bikes": [
+    {
+      "id": 1,
+      "brand": "Trek",
+      "userId": 3,
+      "color": "red",
+      "bikeTypeId": 1
+    },
+    {
+      "id": 2,
+      "brand": "Huffy",
+      "userId": 2,
+      "color": "olive green",
+      "bikeTypeId": 1
+    },
+    {
+      "id": 3,
+      "brand": "Giant",
+      "userId": 3,
+      "color": "blue",
+      "bikeTypeId": 2
+    },
+    {
+      "id": 4,
+      "brand": "Schwinn",
+      "userId": 2,
+      "color": "black",
+      "bikeTypeId": 2
+    },
+    {
+      "id": 5,
+      "brand": "Cannondale",
+      "userId": 4,
+      "color": "yellow",
+      "bikeTypeId": 3
+    },
+    {
+      "id": 6,
+      "brand": "Specialized",
+      "userId": 3,
+      "color": "white",
+      "bikeTypeId": 3
+    }
+  ],
+  "bikeTypes": [
+    {
+      "id": 1,
+      "name": "Mountain"
+    },
+    {
+      "id": 2,
+      "name": "Road"
+    },
+    {
+      "id": 3,
+      "name": "Hybrid"
+    },
+    {
+      "id": 4,
+      "name": "Electric"
+    }
+  ],
+  "workOrders": [
+    {
+      "id": 1,
+      "dateInitiated": "2023-01-10T12:30:00",
+      "dateCompleted": "2023-01-12T14:45:00",
+      "description": "Broke the wheel on my face",
+      "bikeId": 2
+    },
+    {
+      "id": 2,
+      "dateInitiated": "2023-01-15T09:45:00",
+      "dateCompleted": "2023-01-18T11:20:00",
+      "description": "Flat tire issue",
+      "bikeId": 3
+    },
+    {
+      "id": 3,
+      "dateInitiated": "2023-02-05T14:00:00",
+      "dateCompleted": null,
+      "description": "Brake adjustment needed",
+      "bikeId": 1
+    },
+    {
+      "id": 4,
+      "dateInitiated": "2023-02-10T10:15:00",
+      "dateCompleted": null,
+      "description": "Chain replacement",
+      "bikeId": 4
+    },
+    {
+      "id": 5,
+      "dateInitiated": "2023-02-20T08:00:00",
+      "dateCompleted": null,
+      "description": "Battery replacement for electric bike",
+      "bikeId": 5
+    },
+    {
+      "id": 6,
+      "dateInitiated": "2023-03-05T16:30:00",
+      "dateCompleted": null,
+      "description": "Tune-up for hybrid bike",
+      "bikeId": 6
+    }
+  ]
 }
+
+
