@@ -41,15 +41,11 @@ export default function WorkOrders() {
                     </CardSubtitle>
                     <CardText>Description: {wo.description}</CardText>
                   </CardBody>
-                  <CardBody color="dark" inverse>
+                  <CardBody>
                     <CardTitle tag="h4">{wo.bike.brand}</CardTitle>
                     <p>Color: {wo.bike.color}</p>
                   </CardBody>
                 </Card>
-            
-            
-                  
-                
               </section>
             );
           })}
