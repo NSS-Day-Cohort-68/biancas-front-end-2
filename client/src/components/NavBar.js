@@ -61,17 +61,20 @@ useEffect(()=>{
                     Bikes
                   </NavLink>
                 </NavItem>
-                <NavItem onClick={() => setOpen(false)}>
-                  <NavLink tag={RRNavLink} to="/workorders">
-                    Work Orders
-                  </NavLink>
-                </NavItem>
+
                 {loggedInUser.isAdmin && (
-                  <NavItem onClick={() => setOpen(false)}>
-                    <NavLink tag={RRNavLink} to="/users">
-                      Users
-                    </NavLink>
-                  </NavItem>
+                  <>
+                    <NavItem onClick={() => setOpen(false)}>
+                      <NavLink tag={RRNavLink} to="/workorders">
+                        Work Orders
+                      </NavLink>
+                    </NavItem>
+                    <NavItem onClick={() => setOpen(false)}>
+                      <NavLink tag={RRNavLink} to="/users">
+                        Users
+                      </NavLink>
+                    </NavItem>
+                  </>
                 )}
               </Nav>
             </Collapse>
