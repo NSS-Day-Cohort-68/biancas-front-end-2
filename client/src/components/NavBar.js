@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getBikes, getBikesInShopCount } from "../managers/bikeManager.js";
 import { NavLink as RRNavLink } from "react-router-dom";
 import {
   Button,
@@ -15,16 +16,28 @@ import {
 export default function NavBar({ loggedInUser, setLoggedInUser }) {
   const [inventory, setInventory] = useState(0);
   const [open, setOpen] = useState(false);
-
+  const [workOrders, setWorkOrders] = useState([])
+  
   const toggleNavbar = () => setOpen(!open);
 
+
+useEffect(()=>{
+  getBikesInShopCount().then(workArray=>{
+    setWorkOrders(workArray)
+  })
+},[inventory])
+
+ 
   const getInventory = () => {
-    //implement functionality here....
+    const bikesNotDone = workOrders.filter(workOrders=>workOrders.dateCompleted===null)
+    const openWorkOrders = bikesNotDone.length
+    setInventory(openWorkOrders)
+    
   };
 
   useEffect(() => {
     loggedInUser && getInventory();
-  }, [loggedInUser]);
+  }, [loggedInUser, workOrders, inventory]);
 
   return (
     <div>
@@ -62,9 +75,10 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                 )}
               </Nav>
             </Collapse>
-            <NavbarText style={{ marginRight: "4px" }}>
+            {loggedInUser.isAdmin ? (<NavbarText style={{ marginRight: "4px" }}>
               Bikes in Garage: {inventory}
-            </NavbarText>
+            </NavbarText>):("")}
+            
             <Button
               color="primary"
               onClick={(e) => {
