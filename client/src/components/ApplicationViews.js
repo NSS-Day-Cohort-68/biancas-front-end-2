@@ -1,8 +1,9 @@
-import { Route, Routes } from "react-router-dom";
-import Bikes from "./bikes/Bikes";
-import { AuthorizedRoute } from "./auth/AuthorizedRoute";
-import Login from "./auth/Login";
-import Register from "./auth/Register";
+import { Route, Routes } from "react-router-dom"
+import Bikes from "./bikes/Bikes"
+import { AuthorizedRoute } from "./auth/AuthorizedRoute"
+import Login from "./auth/Login"
+import Register from "./auth/Register"
+import { BikeTypesList } from "./bikes/BikeTypesList"
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -12,7 +13,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           index
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              <Bikes loggedInUser={loggedInUser}/>
+              <Bikes loggedInUser={loggedInUser} />
             </AuthorizedRoute>
           }
         />
@@ -20,7 +21,15 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           path="bikes"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              <Bikes loggedInUser={loggedInUser}/>
+              <Bikes loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="bike-types"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <BikeTypesList loggedInUser={loggedInUser} />
             </AuthorizedRoute>
           }
         />
