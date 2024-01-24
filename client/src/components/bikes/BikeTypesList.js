@@ -23,7 +23,10 @@ export const BikeTypesList = ({ loggedInUser }) => {
         id: bikeTypes.length + 1,
         name: newBikeType,
       }
-      createNewBikeType(newBikeTypeObj).then(getAllBikeTypes())
+      createNewBikeType(newBikeTypeObj).then(() => {
+        setNewBikeType("")
+        getAllBikeTypes()
+      })
     } else {
       window.alert("This Type is already in the database")
     }
