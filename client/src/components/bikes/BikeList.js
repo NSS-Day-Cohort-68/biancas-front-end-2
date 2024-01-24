@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import BikeCard from "./BikeCard";
 import { getBikes } from "../../managers/bikeManager";
+import { Link } from "react-router-dom";
+import { Button } from "reactstrap";
+import "./Bikes.css"
 
 export default function BikeList({ setDetailsBikeId, loggedInUser }) {
   const [bikes, setBikes] = useState([]);
@@ -22,7 +25,12 @@ export default function BikeList({ setDetailsBikeId, loggedInUser }) {
 
   return (
     <>
-      <h2>Bikes</h2>
+      <div className="bikes-col-header-bar">
+        <h2>Bikes</h2>
+        <Link to={"/newBike"}>
+          <Button color="primary">New Bike</Button>
+        </Link>
+      </div>
       {loggedInUser.isAdmin ?
       bikes.map((bike) => (
         <BikeCard
