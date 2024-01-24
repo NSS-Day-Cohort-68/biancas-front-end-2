@@ -68,8 +68,8 @@ useEffect(()=>{
                 </NavItem>
                 {loggedInUser.isAdmin && (
                   <NavItem onClick={() => setOpen(false)}>
-                    <NavLink tag={RRNavLink} to="/employees">
-                      Employees
+                    <NavLink tag={RRNavLink} to="/users">
+                      Users
                     </NavLink>
                   </NavItem>
                 )}
