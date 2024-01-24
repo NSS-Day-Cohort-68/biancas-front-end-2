@@ -31,39 +31,42 @@ export const BikeTypesList = ({ loggedInUser }) => {
 
   return (
     <>
-      <h2>Bike Types</h2>
-      <div>
-        <Button
-          style={{ marginBottom: "10px" }}
-          color="dark"
-          onClick={() => {
-            handleNewBikeType()
-          }}
-        >
-          Add New Type
-        </Button>
-        <input
-          type="text"
-          placeholder="Please enter a New Bike Type"
-          value={newBikeType}
-          onChange={(event) => setNewBikeType(event.target.value)}
-        ></input>
+      <div className="container">
+        <h2>Bike Types</h2>
+        <div>
+          <Button
+            style={{ marginBottom: "10px", marginRight: "10px" }}
+            color="dark"
+            onClick={() => {
+              handleNewBikeType()
+            }}
+          >
+            Add New Type
+          </Button>
+          <input
+            size={30}
+            type="text"
+            placeholder="Please enter a New Bike Type"
+            value={newBikeType}
+            onChange={(event) => setNewBikeType(event.target.value)}
+          ></input>
+        </div>
+        {bikeTypes.map((bikeTypeObj) => (
+          <Card
+            key={bikeTypeObj.id}
+            color="dark"
+            outline
+            style={{ marginBottom: "10px" }}
+          >
+            <CardBody>
+              <CardTitle tag="h5">{bikeTypeObj.name}</CardTitle>
+              <CardSubtitle className="mb-2 text-muted" tag="h6">
+                ID: {bikeTypeObj.id}
+              </CardSubtitle>
+            </CardBody>
+          </Card>
+        ))}
       </div>
-      {bikeTypes.map((bikeTypeObj) => (
-        <Card
-          key={bikeTypeObj.id}
-          color="dark"
-          outline
-          style={{ marginBottom: "10px" }}
-        >
-          <CardBody>
-            <CardTitle tag="h5">{bikeTypeObj.name}</CardTitle>
-            <CardSubtitle className="mb-2 text-muted" tag="h6">
-              ID: {bikeTypeObj.id}
-            </CardSubtitle>
-          </CardBody>
-        </Card>
-      ))}
     </>
   )
 }
