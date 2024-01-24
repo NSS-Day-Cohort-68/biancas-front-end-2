@@ -10,7 +10,7 @@ export const UserCard = ({ user, getAndSetUsers }) => {
         </CardTitle>
         <CardText>{user.email}</CardText>
       </CardBody>
-      {user.isAdmin && (
+      {user.isAdmin ? (
         <Button
           color="dark"
           onClick={async () => {
@@ -21,8 +21,7 @@ export const UserCard = ({ user, getAndSetUsers }) => {
         >
           Demote
         </Button>
-      )}
-      {!user.isAdmin && (
+      ) : (
         <Button
           color="dark"
           onClick={async () => {
