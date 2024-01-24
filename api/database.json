@@ -97,6 +97,22 @@
     {
       "id": 4,
       "name": "Electric"
+    },
+    {
+      "id": 5,
+      "name": "Hybrid"
+    },
+    {
+      "id": 6,
+      "name": "Folding"
+    },
+    {
+      "id": 7,
+      "name": "BMX"
+    },
+    {
+      "id": 8,
+      "name": "Fat"
     }
   ],
   "workOrders": [
@@ -144,5 +160,3 @@
     }
   ]
 }
-
-
