@@ -60,20 +60,23 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                     Bikes
                   </NavLink>
                 </NavItem>
-                <NavItem onClick={() => setOpen(false)}>
-                  <NavLink tag={RRNavLink} to="/workorders">
-                    Work Orders
-                  </NavLink>
-                </NavItem>
+
                 {loggedInUser.isAdmin && (
-                  <NavItem onClick={() => setOpen(false)}>
-                    <NavLink tag={RRNavLink} to="/users">
-                      Users
-                    </NavLink>
+                  <>
+                    <NavItem onClick={() => setOpen(false)}>
+                      <NavLink tag={RRNavLink} to="/workorders">
+                        Work Orders
+                      </NavLink>
+                    </NavItem>
+                    <NavItem onClick={() => setOpen(false)}>
+                      <NavLink tag={RRNavLink} to="/users">
+                        Users
+                      </NavLink>
+                    </NavItem>
                     <NavLink tag={RRNavLink} to="/bike-types">
                       Bike Types
                     </NavLink>
-                  </NavItem>
+                  </>
                 )}
               </Nav>
             </Collapse>
