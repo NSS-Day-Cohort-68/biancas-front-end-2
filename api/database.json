@@ -79,6 +79,13 @@
       "userId": 3,
       "color": "white",
       "bikeTypeId": 3
+    },
+    {
+      "brand": "Mongoose",
+      "userId": 1,
+      "color": "Silver",
+      "bikeTypeId": "1",
+      "id": 7
     }
   ],
   "bikeTypes": [

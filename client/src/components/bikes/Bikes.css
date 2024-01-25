@@ -2,3 +2,18 @@
     display: flex;
     justify-content: space-between;
 }
+
+.newBike-form-container {
+    display: flex;
+    flex-direction: column;
+    margin: 60px;
+    border:2px solid hwb(0 42% 58%);
+    border-radius: 10px;
+    padding: 40px 80px 20px 80px;
+}
+
+.submit-btn-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 20px;
+}
