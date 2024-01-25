@@ -93,6 +93,20 @@
       "color": "Olive Green",
       "bikeTypeId": "7",
       "id": 8
+    },
+    {
+      "brand": "Cyclone",
+      "userId": 1,
+      "color": "green",
+      "bikeTypeId": "8",
+      "id": 9
+    },
+    {
+      "brand": "Green Machine",
+      "userId": 1,
+      "color": "red",
+      "bikeTypeId": "1",
+      "id": 10
     }
   ],
   "bikeTypes": [
@@ -133,28 +147,28 @@
     {
       "id": 1,
       "dateInitiated": "2023-01-10T12:30:00",
-      "dateCompleted": "2023-01-12T14:45:00",
+      "dateCompleted": null,
       "description": "Broke the wheel on my face",
       "bikeId": 2
     },
     {
       "id": 2,
       "dateInitiated": "2023-01-15T09:45:00",
-      "dateCompleted": "2023-01-18T11:20:00",
+      "dateCompleted": "2024-01-25T19:14:00.578Z",
       "description": "Flat tire issue",
       "bikeId": 3
     },
     {
       "id": 3,
       "dateInitiated": "2023-02-05T14:00:00",
-      "dateCompleted": null,
+      "dateCompleted": "2024-01-25T16:41:55.159Z",
       "description": "Brake adjustment needed",
       "bikeId": 1
     },
     {
       "id": 4,
       "dateInitiated": "2023-02-10T10:15:00",
-      "dateCompleted": null,
+      "dateCompleted": "2024-01-25T19:11:29.391Z",
       "description": "Chain replacement",
       "bikeId": 4
     },

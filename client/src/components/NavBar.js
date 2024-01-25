@@ -13,10 +13,14 @@ import {
   NavbarToggler,
 } from "reactstrap"
 
-export default function NavBar({ loggedInUser, setLoggedInUser }) {
+export default function NavBar({
+  loggedInUser,
+  setLoggedInUser,
+  workOrders,
+  setWorkOrders,
+}) {
   const [inventory, setInventory] = useState(0)
   const [open, setOpen] = useState(false)
-  const [workOrders, setWorkOrders] = useState([])
 
   const toggleNavbar = () => setOpen(!open)
 
@@ -24,7 +28,7 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
     getBikesInShopCount().then((workArray) => {
       setWorkOrders(workArray)
     })
-  }, [inventory])
+  }, [inventory, setWorkOrders])
 
   const getInventory = () => {
     const bikesNotDone = workOrders.filter(

@@ -6,9 +6,14 @@ import Register from "./auth/Register"
 import WorkOrders from "./work-orders/WorkOrders"
 import { UserList } from "./users/UserList"
 import { BikeTypesList } from "./bikes/BikeTypesList"
-import NewBike from "./bikes/NewBike";
+import NewBike from "./bikes/NewBike"
 
-export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
+export default function ApplicationViews({
+  loggedInUser,
+  setLoggedInUser,
+  workOrders,
+  setWorkOrders,
+}) {
   return (
     <Routes>
       <Route path="/">
@@ -36,8 +41,8 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             </AuthorizedRoute>
           }
         />
-        <Route 
-          path="newBike" 
+        <Route
+          path="newBike"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
               <NewBike loggedInUser={loggedInUser} />
@@ -49,7 +54,10 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           path="workorders"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              <WorkOrders />
+              <WorkOrders
+                workOrders={workOrders}
+                setWorkOrders={setWorkOrders}
+              />
             </AuthorizedRoute>
           }
         />

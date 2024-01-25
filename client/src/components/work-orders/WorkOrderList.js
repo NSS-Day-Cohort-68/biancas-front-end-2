@@ -1,27 +1,20 @@
-import { useEffect, useState } from "react";
-import WorkOrderCard from "./WorkOrderCard";
-import { getWorkOrders } from "../../managers/orderManager";
+import { useEffect, useState } from "react"
+import WorkOrderCard from "./WorkOrderCard"
 
-export default function WorkOrderList({ setWoBikeDetails }) {
-  const [workOrders, setWorkOrders] = useState([]);
-  const [filteredOrders, setFilteredOrders] = useState([]);
-
-  const allWorkOrders = () => {
-    getWorkOrders().then((workArr) => {
-      setWorkOrders(workArr);
-    });
-  };
-
-  useEffect(() => {
-    allWorkOrders();
-  }, []);
+export default function WorkOrderList({
+  setWoBikeDetails,
+  workOrders,
+  setWorkOrders,
+}) {
+  // const [workOrders, setWorkOrders] = useState([])
+  const [filteredOrders, setFilteredOrders] = useState([])
 
   useEffect(() => {
     const showFilteredOrders = workOrders.filter(
       (order) => order.dateCompleted === null
-    );
-    setFilteredOrders(showFilteredOrders);
-  }, [workOrders]);
+    )
+    setFilteredOrders(showFilteredOrders)
+  }, [workOrders])
 
   return (
     <>
@@ -31,14 +24,17 @@ export default function WorkOrderList({ setWoBikeDetails }) {
           {filteredOrders.map((wo) => {
             return (
               <WorkOrderCard
+                workOrders={workOrders}
+                setWorkOrders={setWorkOrders}
                 wo={wo}
+                // allWorkOrders={allWorkOrders}
                 setWoBikeDetails={setWoBikeDetails}
                 key={`wo-${wo.id}`}
               ></WorkOrderCard>
-            );
+            )
           })}
         </div>
       </div>
     </>
-  );
+  )
 }
