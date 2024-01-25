@@ -23,6 +23,9 @@ export default function NewBike({ loggedInUser }) {
     }
 
     const handleSubmit = () => {
+        if (bikeObj.brand === '' || bikeObj.color === '' || bikeObj.bikeTypeId === 0 ) {
+            window.alert("Please fill in all form fields")
+        } else {
         const newBikeObj = {
                 brand: bikeObj.brand,
                 userId: userId,
@@ -31,6 +34,7 @@ export default function NewBike({ loggedInUser }) {
         }
         postNewBike(newBikeObj)
         navigate("/bikes")
+        }
     }
 
     useEffect(()=>{
