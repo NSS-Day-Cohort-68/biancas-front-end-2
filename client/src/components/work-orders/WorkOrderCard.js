@@ -5,9 +5,22 @@ import {
   CardSubtitle,
   CardText,
   CardTitle,
-} from "reactstrap";
+} from "reactstrap"
+import { updateWorkOrder } from "../../managers/orderManager"
 
-export default function WorkOrderCard({ wo, setWoBikeDetails }) {
+export default function WorkOrderCard({ wo, setWoBikeDetails, allWorkOrders }) {
+  const handleCompleteWorkOrder = () => {
+    const completeWorkOrder = {
+      id: wo.id,
+      dateInitiated: wo.dateInitiated,
+      dateCompleted: new Date(),
+      description: wo.description,
+      bikeId: wo.bikeId,
+    }
+    updateWorkOrder(completeWorkOrder)
+    allWorkOrders()
+  }
+
   return (
     <section>
       <Card outline color="warning" key={wo.id} style={{ marginBottom: "4px" }}>
@@ -22,18 +35,25 @@ export default function WorkOrderCard({ wo, setWoBikeDetails }) {
           <Button
             color="dark"
             onClick={() => {
-              setWoBikeDetails(wo.bikeId);
+              setWoBikeDetails(wo.bikeId)
               window.scrollTo({
                 top: 0,
                 left: 0,
                 behavior: "smooth",
-              });
+              })
             }}
           >
             Show Details
           </Button>
+          <Button
+            color="primary"
+            onClick={handleCompleteWorkOrder}
+            style={{ marginLeft: "5px" }}
+          >
+            Complete
+          </Button>
         </CardBody>
       </Card>
     </section>
-  );
+  )
 }
