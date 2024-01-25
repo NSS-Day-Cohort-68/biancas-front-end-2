@@ -6,9 +6,9 @@ import {
   CardText,
   CardTitle,
 } from "reactstrap"
-import { updateWorkOrder } from "../../managers/orderManager"
+import { getWorkOrders, updateWorkOrder } from "../../managers/orderManager"
 
-export default function WorkOrderCard({ wo, setWoBikeDetails, allWorkOrders }) {
+export default function WorkOrderCard({ wo, setWoBikeDetails, setWorkOrders }) {
   const handleCompleteWorkOrder = () => {
     const completeWorkOrder = {
       id: wo.id,
@@ -18,7 +18,9 @@ export default function WorkOrderCard({ wo, setWoBikeDetails, allWorkOrders }) {
       bikeId: wo.bikeId,
     }
     updateWorkOrder(completeWorkOrder)
-    allWorkOrders()
+    getWorkOrders().then((res) => {
+      setWorkOrders(res)
+    })
   }
 
   return (
