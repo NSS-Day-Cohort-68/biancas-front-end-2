@@ -3,7 +3,9 @@ import Bikes from "./bikes/Bikes"
 import { AuthorizedRoute } from "./auth/AuthorizedRoute"
 import Login from "./auth/Login"
 import Register from "./auth/Register"
+import WorkOrders from "./work-orders/WorkOrders"
 import { UserList } from "./users/UserList"
+import { BikeTypesList } from "./bikes/BikeTypesList"
 import NewBike from "./bikes/NewBike";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -26,6 +28,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             </AuthorizedRoute>
           }
         />
+        <Route
+          path="bike-types"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <BikeTypesList loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+          }
+        />
         <Route 
           path="newBike" 
           element={
@@ -39,7 +49,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           path="workorders"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              <p>Work Orders</p>
+              <WorkOrders />
             </AuthorizedRoute>
           }
         />

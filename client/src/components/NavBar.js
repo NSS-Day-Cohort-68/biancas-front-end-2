@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
-import { NavLink as RRNavLink } from "react-router-dom";
+import { useEffect, useState } from "react"
+import { getBikesInShopCount } from "../managers/bikeManager.js"
+import { NavLink as RRNavLink } from "react-router-dom"
 import {
   Button,
   Collapse,
@@ -10,21 +11,32 @@ import {
   NavbarBrand,
   NavbarText,
   NavbarToggler,
-} from "reactstrap";
+} from "reactstrap"
 
 export default function NavBar({ loggedInUser, setLoggedInUser }) {
-  const [inventory, setInventory] = useState(0);
-  const [open, setOpen] = useState(false);
+  const [inventory, setInventory] = useState(0)
+  const [open, setOpen] = useState(false)
+  const [workOrders, setWorkOrders] = useState([])
 
-  const toggleNavbar = () => setOpen(!open);
-
-  const getInventory = () => {
-    //implement functionality here....
-  };
+  const toggleNavbar = () => setOpen(!open)
 
   useEffect(() => {
-    loggedInUser && getInventory();
-  }, [loggedInUser]);
+    getBikesInShopCount().then((workArray) => {
+      setWorkOrders(workArray)
+    })
+  }, [inventory])
+
+  const getInventory = () => {
+    const bikesNotDone = workOrders.filter(
+      (workOrders) => workOrders.dateCompleted === null
+    )
+    const openWorkOrders = bikesNotDone.length
+    setInventory(openWorkOrders)
+  }
+
+  useEffect(() => {
+    loggedInUser && getInventory()
+  }, [loggedInUser, workOrders, inventory])
 
   return (
     <div>
@@ -48,30 +60,41 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                     Bikes
                   </NavLink>
                 </NavItem>
-                <NavItem onClick={() => setOpen(false)}>
-                  <NavLink tag={RRNavLink} to="/workorders">
-                    Work Orders
-                  </NavLink>
-                </NavItem>
+
                 {loggedInUser.isAdmin && (
-                  <NavItem onClick={() => setOpen(false)}>
-                    <NavLink tag={RRNavLink} to="/users">
-                      Users
+                  <>
+                    <NavItem onClick={() => setOpen(false)}>
+                      <NavLink tag={RRNavLink} to="/workorders">
+                        Work Orders
+                      </NavLink>
+                    </NavItem>
+                    <NavItem onClick={() => setOpen(false)}>
+                      <NavLink tag={RRNavLink} to="/users">
+                        Users
+                      </NavLink>
+                    </NavItem>
+                    <NavLink tag={RRNavLink} to="/bike-types">
+                      Bike Types
                     </NavLink>
-                  </NavItem>
+                  </>
                 )}
               </Nav>
             </Collapse>
-            <NavbarText style={{ marginRight: "4px" }}>
-              Bikes in Garage: {inventory}
-            </NavbarText>
+            {loggedInUser.isAdmin ? (
+              <NavbarText style={{ marginRight: "4px" }}>
+                Bikes in Garage: {inventory}
+              </NavbarText>
+            ) : (
+              ""
+            )}
+
             <Button
               color="primary"
               onClick={(e) => {
-                e.preventDefault();
-                setOpen(false);
-                setLoggedInUser(null);
-                localStorage.removeItem("biancas_user");
+                e.preventDefault()
+                setOpen(false)
+                setLoggedInUser(null)
+                localStorage.removeItem("biancas_user")
               }}
             >
               Logout
@@ -88,5 +111,5 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
         )}
       </Navbar>
     </div>
-  );
+  )
 }

@@ -17,6 +17,8 @@ export default function BikeList({ setDetailsBikeId, loggedInUser }) {
     getAllBikes();
   }, []);
 
+  
+
   useEffect(() => {
     const uBikes = bikes.filter(bike =>
       bike.userId === loggedInUser.id)
